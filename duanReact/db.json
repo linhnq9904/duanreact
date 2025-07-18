@@ -32,5 +32,35 @@
             "id": 3,
             "name": "Laptops"
         }
+    ],
+    "orders": [
+        {
+            "id": "101",
+            "customerName": "Nguyen Van A",
+            "products": [
+                {
+                    "productId": "1",
+                    "quantity": 2
+                },
+                {
+                    "productId": "2",
+                    "quantity": 1
+                }
+            ],
+            "total": 797,
+            "status": "pending"
+        },
+        {
+            "id": "102",
+            "customerName": "Tran Thi B",
+            "products": [
+                {
+                    "productId": "2",
+                    "quantity": 3
+                }
+            ],
+            "total": 1197,
+            "status": "shipped"
+        }
     ]
 }
