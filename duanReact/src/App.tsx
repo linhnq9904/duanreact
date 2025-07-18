@@ -17,10 +17,6 @@ function App() {
       path: "/categories",
       element: <CategoryList />,
     },
-    {
-      path: "/order",
-      element: <CategoryList />,
-    },
   ]);
   return (
     <div>

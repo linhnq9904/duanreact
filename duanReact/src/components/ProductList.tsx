@@ -1,11 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { Image, Spin, Table } from "antd";
+import Header from "./Header";
 
 interface Product {
     id: string;
     name: string;
     price: number;
+    image: string;
+    description: string;
 }
+
 function ProductList() {
     const fetchProducts = async () => {
         const res = await fetch("http://localhost:3001/products");
@@ -44,17 +48,18 @@ function ProductList() {
     ];
     return (
         <div>
+            < Header />
             {/* {isLoading && <Spin />} */}
             {error && <p>Error: {error.message}</p>}
             {/* {data?.map((item: Product) => (
-        <p key={item.id}>{item.name}</p>
-      ))} */}
+            <p key={item.id}>{item.name}</p>
+        ))} */}
             <Table
                 dataSource={data}
                 columns={columns}
                 rowKey={"id"}
-                loading={isLoading} // Hiển thị spinner khi đang tải
-                pagination={{ pageSize: 5 }} // Phân trang, mỗi trang 5 bản ghi
+                loading={isLoading}
+                pagination={{ pageSize: 5 }}
             />
         </div>
     );
