@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { Image, Spin, Table } from "antd";
+import { Image, Table } from "antd";
 import Header from "./Header";
-import Item from "antd/es/list/Item";
 
 interface Product {
     id: string;
@@ -66,18 +65,36 @@ function OrderList() {
                         </li>
                     ))}
                 </ul>
-            )
+            ),
         },
         {
             title: "Image",
             dataIndex: "detailedProducts",
-            render: (src: string, recourd: Product, index: number) => {
-                return <Image src={src} width={300} alt={recourd.name} />;
-            },
+            render: (items: any[]) => (
+                <div>
+                    {items?.map((item, index) => (
+                        <Image
+                            key={index}
+                            src={item.image}
+                            width={60}
+                            alt={item.name}
+                            style={{padding: "5px"}}
+                        />
+                    ))}
+                </div>
+            ),
         },
         {
             title: "Description",
         },
+        {
+            title: "Total",
+            dataIndex: "total",
+        },
+        {
+            title: "Status",
+            dataIndex: "status",
+        }
     ];
     return (
         <div>
