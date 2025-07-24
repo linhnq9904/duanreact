@@ -22,6 +22,11 @@ const items: MenuItem[] = [
         icon: <ShopFilled />,
     },
     {
+        label: "ProductCreate",
+        key: "/ProductCreate",
+        icon: <UnorderedListOutlined />,
+    },
+    {
         label: "Categories",
         key: "/categories",
         icon: <UnorderedListOutlined />,
@@ -36,6 +41,12 @@ const items: MenuItem[] = [
         key: "/OrderProduct",
         icon: <UnorderedListOutlined />,
     },
+    {
+        label: "Users",
+        key: "/Users",
+        icon: <UnorderedListOutlined />,
+    },
+
 ];
 
 const Header: React.FC = () => {

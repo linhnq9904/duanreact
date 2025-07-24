@@ -48,8 +48,10 @@ const ProductCreate = () => {
 
                 <Form.Item
                     label="Price"
-                    name="Price"
-                    rules={[{ required: true, message: "Vui lòng nhập giá" }]}
+                    name="price"
+                    rules={[{ required: true, message: "Vui lòng nhập giá" }, {
+                        type: "number", min: 1000, message: "giá phải lơn hơn 1000"
+                    }]}
                 >
                     <InputNumber
                         placeholder="Nhập giá"

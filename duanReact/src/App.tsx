@@ -5,6 +5,8 @@ import CategoryList from "./components/CategoryList";
 import OrderList from "./components/Order";
 import OrderProduct from "./components/OrderProduct";
 import ProductCreate from "./components/ProductCreate";
+import UserList from "./components/UserList";
+import EditProduct from "./components/EditProduct";
 
 function App() {
   const router = createBrowserRouter([
@@ -31,6 +33,14 @@ function App() {
     {
       path: "/ProductCreate",
       element: <ProductCreate />,
+    },
+    {
+      path: "/Users",
+      element: <UserList />,
+    },
+    {
+      path: "/product/edit/:id",
+      element: <EditProduct />,
     },
   ]);
   return (
