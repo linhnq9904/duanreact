@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button, Image, message, Popconfirm, Space, Table } from "antd";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
@@ -13,16 +13,24 @@ interface Product {
 
 function ProductList() {
     const nav = useNavigate();
+    const queryClient = useQueryClient();
     const handleDelete = async (id: string) => {
-        try {
-            await fetch(`http://localhost:3001/products/${id}`, {
-                method: "DELETE",
-            });
-            message.success("Xóa sản phẩm thành công");
-        } catch (err) {
-            message.error("Lỗi khi xóa sản phẩm");
-        }
+        const res = await fetch(`http://localhost:3001/products/${id}`, {
+            method: "DELETE",
+        });
+        if (!res.ok) throw new Error("Xóa thất bại");
+        return true;
     };
+    const mutation = useMutation({
+        mutationFn: handleDelete,
+        onSuccess: () => {
+            message.success("Tạo sản phẩm thành công!");
+            queryClient.invalidateQueries({ queryKey: ["products"] });
+        },
+        onError: () => {
+            message.error("Tạo sản phẩm thất bại!");
+        },
+    });
     const fetchProducts = async () => {
         const res = await fetch("http://localhost:3001/products");
         return res.json();
@@ -69,7 +77,7 @@ function ProductList() {
                     </Button>
                     <Popconfirm
                         title="Bạn có chắc muốn xóa không?"
-                        onConfirm={() => handleDelete(record.id)}
+                        onConfirm={() => mutation.mutate(record.id)}
                         okText="Xóa"
                         cancelText="Hủy"
                     >

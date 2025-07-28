@@ -2,6 +2,7 @@ import { Form, Input, Button, message, InputNumber } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import Header from "./Header";
 
 const ProductCreate = () => {
 
@@ -29,7 +30,8 @@ const ProductCreate = () => {
         mutation.mutate(values);
     };
 
-    return (
+    return <>
+        < Header />
         <div style={{ maxWidth: 400, margin: "0 auto" }}>
             <h2>Tạo sản phẩm mới</h2>
             <Form
@@ -62,7 +64,7 @@ const ProductCreate = () => {
 
                 <Form.Item
                     label="Image"
-                    name="Image"
+                    name="image"
                     rules={[{ required: true, message: "Vui lòng nhập hình ảnh" }]}
                 >
                     <Input
@@ -77,7 +79,7 @@ const ProductCreate = () => {
                 </Form.Item>
             </Form>
         </div>
-    );
+    </>
 };
 
 export default ProductCreate;

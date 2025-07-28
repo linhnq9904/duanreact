@@ -2,6 +2,7 @@ import { Form, Input, Button, message, InputNumber } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
+import Header from "./Header";
 
 const fetchProductById = async (id: string) => {
     const res = await fetch(`http://localhost:3001/products/${id}`);
@@ -44,7 +45,8 @@ const EditProduct = () => {
     const onFinish = (values: any) => {
         if (id) mutation.mutate({ id, values });
     };
-    return (
+    return <>
+        <Header />
         <div style={{ maxWidth: 600, margin: "0 auto", padding: 20 }}>
             <h2>Sửa sản phẩm</h2>
             <Form
@@ -91,12 +93,12 @@ const EditProduct = () => {
                         htmlType="submit"
                         loading={mutation.isPending}
                     >
-                       Sửa
+                        Sửa
                     </Button>
                 </Form.Item>
             </Form>
         </div>
-    );
+    </>
 }
 
 export default EditProduct;
