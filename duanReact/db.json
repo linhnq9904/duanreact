@@ -4,7 +4,7 @@
       "name": "Samsung Galaxy S24",
       "price": 8992,
       "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630",
-      "description": "linhnhnh",
+      "description": "tao day",
       "id": "2"
     },
     {
@@ -31,6 +31,13 @@
       "price": 12032,
       "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMVFRUWGBgYGBgXGBgYGBgbHRoYGBcdGhobHyggHRolHhgYITEhJSkrLi8uGh8zODMtNygtLisBCgoKDg0NFRAQGi0dHx0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALcBEwMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAADAAIEBQYBBwj/xABKEAABAwIDBAcEBQgIBgMBAAABAgMRACEEEjEFQVFhBhMicYGRoTKxwfAHFEJS0SMzYnKCkuHxQ0RTk6KywtIVFjRUc4Mko+IX/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAECA//EACERAQEBAAMAAgIDAQAAAAAAAAABEQISITFBYZEiUXET/9oADAMBAAIRAxEAPwDyPEJgjuFNS5uqRjG7gg2geFNDABsSq17R8e/yrA7AM8fmb1zKBc0RSrWEHn8KS0LIBzE9wNQJL/CKlIenXhuqMMJBIkGNDuPdNTAAE7jfcR7vwrNDCoAge6rTFbSVcEEnsgEkHKmNBAhIPAVWdQcpUBYEA7oJmOZ0NLMR2QZAM6wJ41AfrTkKrAaAnUnkKl7KbUpwdZOTIVTG4b+7WgYRpw3DBXmIheQ5RB3GI3RrXo/QnDLUhbjrcTlCSR9kC8Tet8aMftRsNp/JgKuJsbe2OXA13CtNqZCrBZsRlURPAc4r1L6uj7ifIfO80Tqki0JG/cKuGvHMCtZUglBKZGaEe6tLiNkNqcaSpoGVbwoCIVqeExWrwuOYaSELdbQoqVAKgJKlEj31H2n0lZQ2VoPWJBAVBggH7Qze0LjSphrzzpXsRSHOw0tKSCQMwcSIurLFwO+sy7KLKBHeCPfXqrvSBhyFNwtQBTkOZKsqheLQT3kVl+kGNbfyHKkBLgn2goJAiFTaTffuFTYuMmWt6",
       "description": "linh828282"
+    },
+    {
+      "id": "add3",
+      "name": "Samsung Galaxy S25",
+      "price": 2122,
+      "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630",
+      "description": "linh"
     }
   ],
   "categories": [

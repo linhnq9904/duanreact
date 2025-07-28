@@ -1,8 +1,9 @@
 import { Form, Input, Button, message, InputNumber } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import Header from "./Header";
+import { useEdit } from "../../hooks/useEdit";
 
 const fetchProductById = async (id: string) => {
     const res = await fetch(`http://localhost:3001/products/${id}`);
@@ -14,36 +15,32 @@ const EditProduct = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
     const [form] = Form.useForm();
-    const queryClient = useQueryClient();
 
     const { data, isLoading } = useQuery({
-        queryKey: ["product", id],
-        queryFn: () => fetchProductById(id!),
+        queryKey: ["products", id],
+        queryFn: () => fetchProductById(id as string),
         enabled: !!id,
     });
-    const updateProduct = async ({ id, values }: { id: string; values: any }) => {
-        const res = await fetch(`http://localhost:3001/products/${id}`, { method: "PUT", body: JSON.stringify(values), });
-        return res.json();
-    };
-
-    const mutation = useMutation({
-        mutationFn: updateProduct,
-        onSuccess: () => {
-            message.success("Cập nhật sản phẩm thành công");
-            queryClient.invalidateQueries({ queryKey: ["products"] });
-            navigate("/products");
-        },
-        onError: () => {
-            message.error("Lỗi khi cập nhật sản phẩm");
-        },
-    });
+    const mutation = useEdit("products");
 
     useEffect(() => {
         if (data) form.setFieldsValue(data);
     }, [data, form]);
 
     const onFinish = (values: any) => {
-        if (id) mutation.mutate({ id, values });
+        if (!id) return;
+        mutation.mutate(
+            { id, data: values },
+            {
+                onSuccess: () => {
+                    message.success("Cập nhật sản phẩm thành công");
+                    navigate("/products");
+                },
+                onError: () => {
+                    message.error("Lỗi khi cập nhật sản phẩm");
+                },
+            }
+        );
     };
     return <>
         <Header />

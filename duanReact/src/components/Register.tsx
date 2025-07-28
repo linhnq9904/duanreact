@@ -15,7 +15,7 @@ function Register() {
         mutationFn: login,
         onSuccess: () => {
             form.resetFields();
-            nav("/products");
+            nav("/login");
         },
         onError: () => {
             message.error("loi")

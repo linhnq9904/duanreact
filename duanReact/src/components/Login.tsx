@@ -1,28 +1,39 @@
 import { useMutation } from '@tanstack/react-query';
-import { Form, Input, message } from 'antd'
+import { Form, Input, message } from 'antd';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [form] = Form.useForm();
     const nav = useNavigate();
+
     const login = async (values: any) => {
-        const res = await axios.post(`http://localhost:3001/users`, values);
-        return res.data;
-    }
+        const res = await axios.get(`http://localhost:3001/users`, {
+            params: {
+                email: values.email,
+                password: values.password
+            }
+        });
+        if (res.data.length === 0) throw new Error("Sai thông tin đăng nhập");
+        return res.data[0];
+    };
+
     const mutation = useMutation({
         mutationFn: login,
-        onSuccess: () => {
+        onSuccess: (user) => {
+            localStorage.setItem("user", JSON.stringify(user));
             form.resetFields();
             nav("/products");
         },
         onError: () => {
-            message.error("loi")
+            message.error("Sai email hoặc mật khẩu");
         }
-    })
-    const handleSubmit = async (values: any) => {
+    });
+
+    const handleSubmit = (values: any) => {
         mutation.mutate(values);
-    }
+    };
+
     return (
         <div>
             <h1>Đăng Nhập</h1>
@@ -32,26 +43,36 @@ function Login() {
                 onFinish={handleSubmit}
             >
                 <Form.Item
-                    label="tên đăng nhập"
+                    label="Email"
                     name="email"
-                    rules={[{ required: true, message: "không dc bỏ trống" }, {
-                        pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, message: "không đúng dịnh dạng"
-                    }]}
+                    rules={[
+                        { required: true, message: "Không được bỏ trống" },
+                        {
+                            pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                            message: "Email không đúng định dạng"
+                        }
+                    ]}
                 >
-                    <Input></Input>
+                    <Input />
                 </Form.Item>
+
                 <Form.Item
-                    label="mật khẩu"
+                    label="Mật khẩu"
                     name="password"
-                    rules={[{ required: true, message: "không dc bỏ trống" }, {
-                        type: "number", min: 6, message: "ít nhất 6 kí tự"
-                    }]}
+                    rules={[
+                        { required: true, message: "Không được bỏ trống" },
+                        { min: 6, message: "Ít nhất 6 ký tự" }
+                    ]}
                 >
-                    <Input type='password'></Input>
+                    <Input.Password />
+                </Form.Item>
+
+                <Form.Item>
+                    <button type="submit">Đăng nhập</button>
                 </Form.Item>
             </Form>
         </div>
-    )
+    );
 }
 
-export default Login
+export default Login;

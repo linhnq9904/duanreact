@@ -8,7 +8,7 @@ import ProductCreate from "./components/ProductCreate";
 import UserList from "./components/UserList";
 import EditProduct from "./components/EditProduct";
 import Register from "./components/Register";
-import Login from "./components/login";
+import Login from "./components/Login";
 
 function App() {
   const router = createBrowserRouter([

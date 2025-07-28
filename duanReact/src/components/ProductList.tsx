@@ -1,7 +1,8 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button, Image, message, Popconfirm, Space, Table } from "antd";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
+import { useList } from "../../hooks/useList";
 
 interface Product {
     id: string;
@@ -31,15 +32,7 @@ function ProductList() {
             message.error("Tạo sản phẩm thất bại!");
         },
     });
-    const fetchProducts = async () => {
-        const res = await fetch("http://localhost:3001/products");
-        return res.json();
-    };
-    const { data, isLoading, error } = useQuery({
-        queryKey: ["products"],
-        queryFn: fetchProducts,
-    });
-    console.log(data, isLoading, error);
+    const { data, isLoading, error } = useList("products");
     const columns = [
         {
             title: "ID",
