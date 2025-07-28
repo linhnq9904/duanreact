@@ -12,6 +12,25 @@
       "name": "Samsung Galaxy S24",
       "price": 8910,
       "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630"
+    },
+    {
+      "id": "2661",
+      "name": "linh",
+      "price": 1,
+      "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg"
+    },
+    {
+      "id": "d996",
+      "name": "linh",
+      "price": 1,
+      "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg"
+    },
+    {
+      "id": "8314",
+      "name": "Samsung Galaxy S24",
+      "price": 12032,
+      "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMVFRUWGBgYGBgXGBgYGBgbHRoYGBcdGhobHyggHRolHhgYITEhJSkrLi8uGh8zODMtNygtLisBCgoKDg0NFRAQGi0dHx0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALcBEwMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAADAAIEBQYBBwj/xABKEAABAwIDBAcEBQgIBgMBAAABAgMRACEEEjEFQVFhBhMicYGRoTKxwfAHFEJS0SMzYnKCkuHxQ0RTk6KywtIVFjRUc4Mko+IX/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAECA//EACERAQEBAAMAAgIDAQAAAAAAAAABEQISITFBYZEiUXET/9oADAMBAAIRAxEAPwDyPEJgjuFNS5uqRjG7gg2geFNDABsSq17R8e/yrA7AM8fmb1zKBc0RSrWEHn8KS0LIBzE9wNQJL/CKlIenXhuqMMJBIkGNDuPdNTAAE7jfcR7vwrNDCoAge6rTFbSVcEEnsgEkHKmNBAhIPAVWdQcpUBYEA7oJmOZ0NLMR2QZAM6wJ41AfrTkKrAaAnUnkKl7KbUpwdZOTIVTG4b+7WgYRpw3DBXmIheQ5RB3GI3RrXo/QnDLUhbjrcTlCSR9kC8Tet8aMftRsNp/JgKuJsbe2OXA13CtNqZCrBZsRlURPAc4r1L6uj7ifIfO80Tqki0JG/cKuGvHMCtZUglBKZGaEe6tLiNkNqcaSpoGVbwoCIVqeExWrwuOYaSELdbQoqVAKgJKlEj31H2n0lZQ2VoPWJBAVBggH7Qze0LjSphrzzpXsRSHOw0tKSCQMwcSIurLFwO+sy7KLKBHeCPfXqrvSBhyFNwtQBTkOZKsqheLQT3kVl+kGNbfyHKkBLgn2goJAiFTaTffuFTYuMmWt6",
+      "description": "linh828282"
     }
   ],
   "categories": [
@@ -112,6 +131,18 @@
       "name": "User 9",
       "email": "user9@example.com",
       "IsActive": false
+    },
+    {
+      "id": "b547",
+      "name": "linh",
+      "email": "linhnp992004@gmail.com",
+      "password": "123123"
+    },
+    {
+      "id": "985d",
+      "name": "iPhone 15",
+      "email": "linhnp92004@gmail.com",
+      "password": "$2b$10$psaMmFUceI8dBMaNqWjGwuXHHsPsfisF3cVrTMlzV7Hb1RxmHuFse"
     }
   ]
 }

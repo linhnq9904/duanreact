@@ -7,6 +7,8 @@ import OrderProduct from "./components/OrderProduct";
 import ProductCreate from "./components/ProductCreate";
 import UserList from "./components/UserList";
 import EditProduct from "./components/EditProduct";
+import Register from "./components/Register";
+import Login from "./components/login";
 
 function App() {
   const router = createBrowserRouter([
@@ -41,6 +43,14 @@ function App() {
     {
       path: "/product/edit/:id",
       element: <EditProduct />,
+    },
+    {
+      path: "/resigter",
+      element: <Register />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
     },
   ]);
   return (

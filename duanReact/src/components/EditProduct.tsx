@@ -68,7 +68,7 @@ const EditProduct = () => {
                     name="price"
                     rules={[{ required: true, message: "Vui lòng nhập giá" }, { type: "number", min: 1000, message: "giá phải lơn hơn 1000" }]}
                 >
-                    <InputNumber min={0} style={{ width: "100%" }} />
+                    <InputNumber style={{ width: "100%" }} />
                 </Form.Item>
 
                 <Form.Item
