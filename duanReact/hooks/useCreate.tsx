@@ -1,28 +1,17 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { message } from "antd";
+import axios from "axios";
 
-export const useCreate = (resource: string) => {
-    const queryClient = useQueryClient();
-
-    const mutation = useMutation({
-        mutationFn: async (data: any) => {
-            const res = await fetch(`http://localhost:3001/${resource}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (!res.ok) {
-                throw new Error("Tạo mới thất bại");
-            }
-
-            return await res.json();
-        },
+export const useCreate = () => {
+    const createproduct = async (values: any) => {
+        return await axios.post(`http://localhost:3001/products`, values)
+    };
+    const craeteMutation = useMutation({
+        mutationFn: (values: any) => createproduct(values),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: [resource] });
-        },
+            message.success("thanh cong");
+        }
     });
 
-    return mutation;
+    return craeteMutation;
 };

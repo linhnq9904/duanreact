@@ -8,10 +8,11 @@
       "id": "2"
     },
     {
-      "id": "76b4",
       "name": "Samsung Galaxy S24",
       "price": 8910,
-      "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630"
+      "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630",
+      "description": "day ma\n",
+      "id": "76b4"
     },
     {
       "id": "2661",
@@ -84,72 +85,27 @@
       "status": "shipped"
     }
   ],
-  "users": [
+  "users": [],
+  "carts": [
     {
-      "id": "1",
-      "name": "thuan",
-      "email": "user1@example.com",
-      "IsActive": true
+      "id": "gtag5ghxo",
+      "productId": "76b4",
+      "quantity": 1
     },
     {
-      "id": "2",
-      "name": "User 2",
-      "email": "user2@example.com",
-      "IsActive": true
+      "id": "bm6m4ai94",
+      "productId": "d996",
+      "quantity": 1
     },
     {
-      "id": "3",
-      "name": "User 3",
-      "email": "user3@example.com",
-      "IsActive": false
+      "id": "e53kkgf84",
+      "productId": "76b4",
+      "quantity": 1
     },
     {
-      "id": "4",
-      "name": "User 4",
-      "email": "user4@example.com",
-      "IsActive": true
-    },
-    {
-      "id": "5",
-      "name": "User 5",
-      "email": "user5@example.com",
-      "IsActive": true
-    },
-    {
-      "id": "6",
-      "name": "User 6",
-      "email": "user6@example.com",
-      "IsActive": false
-    },
-    {
-      "id": "7",
-      "name": "User 7",
-      "email": "user7@example.com",
-      "IsActive": true
-    },
-    {
-      "id": "8",
-      "name": "User 8",
-      "email": "user8@example.com",
-      "IsActive": true
-    },
-    {
-      "id": "9",
-      "name": "User 9",
-      "email": "user9@example.com",
-      "IsActive": false
-    },
-    {
-      "id": "b547",
-      "name": "linh",
-      "email": "linhnp992004@gmail.com",
-      "password": "123123"
-    },
-    {
-      "id": "985d",
-      "name": "iPhone 15",
-      "email": "linhnp92004@gmail.com",
-      "password": "$2b$10$psaMmFUceI8dBMaNqWjGwuXHHsPsfisF3cVrTMlzV7Hb1RxmHuFse"
+      "id": "atm1bd5r1",
+      "productId": "2",
+      "quantity": 1
     }
   ]
 }

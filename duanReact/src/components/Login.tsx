@@ -8,14 +8,17 @@ function Login() {
     const nav = useNavigate();
 
     const login = async (values: any) => {
-        const res = await axios.get(`http://localhost:3001/users`, {
+        const res = await axios.post(`http://localhost:3001/login`, {
             params: {
                 email: values.email,
                 password: values.password
             }
         });
-        if (res.data.length === 0) throw new Error("Sai thông tin đăng nhập");
-        return res.data[0];
+        const user = res.data[0];
+        if (!user) {
+            throw new Error("Email hoặc mật khẩu không đúng");
+        }
+        return user;
     };
 
     const mutation = useMutation({
@@ -24,6 +27,7 @@ function Login() {
             localStorage.setItem("user", JSON.stringify(user));
             form.resetFields();
             nav("/products");
+            console.log(user);
         },
         onError: () => {
             message.error("Sai email hoặc mật khẩu");

@@ -1,46 +1,24 @@
-import { Form, Input, Button, message, InputNumber } from "antd";
-import { useNavigate, useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { Form, Input, Button, InputNumber } from "antd";
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "./Header";
 import { useEdit } from "../../hooks/useEdit";
-
-const fetchProductById = async (id: string) => {
-    const res = await fetch(`http://localhost:3001/products/${id}`);
-    if (!res.ok) throw new Error("Không tìm thấy sản phẩm");
-    return res.json();
-};
+import { useOne } from "../../hooks/useOne";
 
 const EditProduct = () => {
     const { id } = useParams<{ id: string }>();
-    const navigate = useNavigate();
     const [form] = Form.useForm();
 
-    const { data, isLoading } = useQuery({
-        queryKey: ["products", id],
-        queryFn: () => fetchProductById(id as string),
-        enabled: !!id,
-    });
-    const mutation = useEdit("products");
+    const { data: product } = useOne("products", id);
 
     useEffect(() => {
-        if (data) form.setFieldsValue(data);
-    }, [data, form]);
+        form.setFieldsValue(product);
+    }, [product, form]);
 
-    const onFinish = (values: any) => {
-        if (!id) return;
-        mutation.mutate(
-            { id, data: values },
-            {
-                onSuccess: () => {
-                    message.success("Cập nhật sản phẩm thành công");
-                    navigate("/products");
-                },
-                onError: () => {
-                    message.error("Lỗi khi cập nhật sản phẩm");
-                },
-            }
-        );
+    const editMutation = useEdit("products");
+
+    const handleSubmit = (values: any) => {
+        editMutation.mutate(values);
     };
     return <>
         <Header />
@@ -49,8 +27,7 @@ const EditProduct = () => {
             <Form
                 form={form}
                 layout="vertical"
-                onFinish={onFinish}
-                disabled={isLoading || mutation.isPending}
+                onFinish={handleSubmit}
             >
                 <Form.Item
                     label="Tên sản phẩm"
@@ -88,7 +65,6 @@ const EditProduct = () => {
                     <Button
                         type="primary"
                         htmlType="submit"
-                        loading={mutation.isPending}
                     >
                         Sửa
                     </Button>
@@ -99,5 +75,3 @@ const EditProduct = () => {
 }
 
 export default EditProduct;
-
-

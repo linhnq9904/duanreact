@@ -8,7 +8,7 @@ function Register() {
     const [form] = Form.useForm();
     const nav = useNavigate();
     const login = async (values: any) => {
-        const res = await axios.post(`http://localhost:3001/users`, values);
+        const res = await axios.post(`http://localhost:3001/register`, values);
         return res.data;
     }
     const mutation = useMutation({

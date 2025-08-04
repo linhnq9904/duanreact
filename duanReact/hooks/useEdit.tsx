@@ -1,28 +1,17 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { message } from "antd";
+import axios from "axios";
 
-export const useEdit = (resource: string) => {
-    const queryClient = useQueryClient();
-
-    const mutation = useMutation({
-        mutationFn: async ({ id, data }: { id: string, data: any }) => {
-            const res = await fetch(`http://localhost:3001/${resource}/${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (!res.ok) {
-                throw new Error("Sua thất bại");
-            }
-
-            return await res.json();
-        },
+export const useEdit = (id: string | number) => {
+    const editProduct = async (values: any) => {
+        return await axios.post(`http://localhost:3001/products/${id}`, values)
+    };
+    const editMutation = useMutation({
+        mutationFn: (values: any) => editProduct(values),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: [resource] });
-        },
+            message.success("thanh cong");
+        }
     });
 
-    return mutation;
+    return editMutation;
 };
