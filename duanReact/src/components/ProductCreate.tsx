@@ -1,7 +1,7 @@
 import { Form, Input, Button, InputNumber, Upload, Card, Typography, Space, Select } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import Header from "./Header";
-import { useCreate } from "../../hooks/useCreate";
+import { useCreate } from "../hooks/useCreate";
 
 const { Title } = Typography;
 

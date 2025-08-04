@@ -14,6 +14,7 @@ import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import UserProfile from "./components/UserProfile";
 import { CartProvider } from "./contexts/CartContext";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
     const router = createBrowserRouter([
@@ -23,7 +24,11 @@ function App() {
         },
         {
             path: "/products",
-            element: <ProductList />,
+            element: (
+                <PrivateRoute>
+                    <ProductList />
+                </PrivateRoute>
+            ),
         },
         {
             path: "/categories",
@@ -31,7 +36,11 @@ function App() {
         },
         {
             path: "/Orders",
-            element: <OrderList />,
+            element: (
+                <PrivateRoute>
+                    <OrderList />
+                </PrivateRoute>
+            ),
         },
         {
             path: "/OrderProduct",
@@ -63,7 +72,11 @@ function App() {
         },
         {
             path: "/cart",
-            element: <Cart />,
+            element: (
+                <PrivateRoute>
+                    <Cart />
+                </PrivateRoute>
+            ),
         },
         {
             path: "/checkout",

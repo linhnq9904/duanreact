@@ -1,5 +1,5 @@
 import React from "react";
-import { ShoppingCartOutlined, UserOutlined, SearchOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import { Layout, Row, Col, Input, Badge, Space, Menu, Button, Dropdown } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
@@ -11,9 +11,13 @@ const Header: React.FC = () => {
     const navigate = useNavigate();
     const { items } = useCart();
     const cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/login");
+    }
     const userMenu = [
-        { key: 'profile', label: 'Tài khoản' },
-        { key: 'orders', label: 'Đơn hàng' },
+        { key: 'Login', label: 'Tài khoản', path: '/login' },
+        { key: 'orders', label: 'Đơn hàng', path: '/orders' },
         { key: 'logout', label: 'Đăng xuất' }
     ];
 
@@ -57,7 +61,13 @@ const Header: React.FC = () => {
                                 items: userMenu.map(item => ({
                                     key: item.key,
                                     label: item.label,
-                                    onClick: () => navigate(`/${item.key}`)
+                                    onClick: () => {
+                                        if (item.key === "logout") {
+                                            handleLogout();
+                                        } else {
+                                            navigate(item.path || "/");
+                                        }
+                                    }
                                 }))
                             }}
                         >

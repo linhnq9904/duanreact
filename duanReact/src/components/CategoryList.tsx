@@ -1,6 +1,6 @@
 import { Table } from "antd";
 import Header from "./Header";
-import { useList } from "../../hooks/useList";
+import { useList } from "../hooks/useList";
 
 function CategoryList() {
     const { data, isLoading } = useList("categories");

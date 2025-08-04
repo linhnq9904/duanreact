@@ -1,36 +1,15 @@
-import { useMutation } from '@tanstack/react-query';
-import { Button, Form, Input, message } from 'antd'
-import axios from 'axios';
-import bcrypt from 'bcryptjs';
+import { Button, Form, Input } from 'antd'
+import { useAuth } from '../hooks/useAuth'
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const [form] = Form.useForm();
+    const authMutation = useAuth("Register");
     const nav = useNavigate();
-    const login = async (values: any) => {
-        const res = await axios.post(`http://localhost:3001/register`, values);
-        return res.data;
-    }
-    const mutation = useMutation({
-        mutationFn: login,
-        onSuccess: () => {
-            form.resetFields();
-            nav("/login");
-        },
-        onError: () => {
-            message.error("loi")
-        }
-    })
+
     const handleSubmit = async (values: any) => {
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(values.password, salt);
-
-        const newValues = {
-            ...values,
-            password: hashedPassword,
-        };
-
-        mutation.mutate(newValues);
+        nav('/login');  
+        authMutation.mutate(values);
     }
     return (
         <div>
@@ -67,7 +46,6 @@ function Register() {
                     <Button
                         type="primary"
                         htmlType="submit"
-                        loading={mutation.isPending}
                     >
                         đăng kí
                     </Button>

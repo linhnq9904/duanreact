@@ -85,7 +85,14 @@
       "status": "shipped"
     }
   ],
-  "users": [],
+  "users": [
+    {
+      "email": "linhnqph46354@fpt.edu.vn",
+      "password": "$2a$10$nPPvJCkzlRBfddWFuMaSMOKFpMMri0UOPawGATNCawoXNfanNEPvu",
+      "name": "Linh day",
+      "id": 1
+    }
+  ],
   "carts": [
     {
       "id": "gtag5ghxo",

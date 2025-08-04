@@ -14,12 +14,10 @@ interface CheckoutForm {
 }
 
 const Checkout: React.FC = () => {
-    const navigate = useNavigate();
     const [form] = Form.useForm<CheckoutForm>();
 
     const onFinish = (values: CheckoutForm) => {
         console.log('Checkout values:', values);
-        // Xử lý thanh toán
     };
 
     return (

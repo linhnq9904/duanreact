@@ -3,7 +3,7 @@ import { Table, Button, InputNumber, Typography, Space, Card, Row, Col, Spin } f
 import { DeleteOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
-import { useList } from '../../hooks/useList';
+import { useList } from '../hooks/useList';
 
 const { Title, Text } = Typography;
 

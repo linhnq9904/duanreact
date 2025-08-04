@@ -1,42 +1,16 @@
-import { useMutation } from '@tanstack/react-query';
-import { Form, Input, message } from 'antd';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Form, Input } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 
 function Login() {
     const [form] = Form.useForm();
     const nav = useNavigate();
+    const authMutation = useAuth("Login");
 
-    const login = async (values: any) => {
-        const res = await axios.post(`http://localhost:3001/login`, {
-            params: {
-                email: values.email,
-                password: values.password
-            }
-        });
-        const user = res.data[0];
-        if (!user) {
-            throw new Error("Email hoặc mật khẩu không đúng");
-        }
-        return user;
-    };
-
-    const mutation = useMutation({
-        mutationFn: login,
-        onSuccess: (user) => {
-            localStorage.setItem("user", JSON.stringify(user));
-            form.resetFields();
-            nav("/products");
-            console.log(user);
-        },
-        onError: () => {
-            message.error("Sai email hoặc mật khẩu");
-        }
-    });
-
-    const handleSubmit = (values: any) => {
-        mutation.mutate(values);
-    };
+    const handleSubmit = async (values: any) => {
+        nav('/products');
+        authMutation.mutate(values);
+    }
 
     return (
         <div>
@@ -72,8 +46,13 @@ function Login() {
                 </Form.Item>
 
                 <Form.Item>
+                    <Link to="/resigter">Bạn chưa có tài khoản?</Link>
+                </Form.Item>
+
+                <Form.Item>
                     <button type="submit">Đăng nhập</button>
                 </Form.Item>
+
             </Form>
         </div>
     );

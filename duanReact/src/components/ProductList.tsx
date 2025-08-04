@@ -1,9 +1,9 @@
-import { Card, Row, Col, Button, Image, Layout, Typography, message } from "antd";
+import { Card, Row, Col, Button, Image, Layout, Typography } from "antd";
 import { ShoppingCartOutlined, EyeOutlined } from "@ant-design/icons";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
-import { useList } from "../../hooks/useList";
-import { useAddToCart } from "../../hooks/useAddToCart";
+import { useList } from "../hooks/useList";
+import { useAddToCart } from "../hooks/useAddToCart";
 
 const { Content } = Layout;
 const { Title, Text } = Typography;

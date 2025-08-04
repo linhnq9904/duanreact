@@ -14,7 +14,6 @@ const fetchProductById = async (id: string) => {
 
 const ProductDetail = () => {
     const { id } = useParams<{ id: string }>();
-    const navigate = useNavigate();
 
     const { data, isLoading, isError } = useQuery({
         queryKey: ["product", id],
@@ -42,26 +41,26 @@ const ProductDetail = () => {
                         <Title level={2}>{data.name}</Title>
                         <Rate disabled defaultValue={4.5} />
                         <Text type="secondary" style={{ marginLeft: 8 }}>(150 đánh giá)</Text>
-                        
+
                         <Divider />
-                        
+
                         <Title level={3} style={{ color: '#f5222d', marginTop: 0 }}>
                             {data.price.toLocaleString('vi-VN')}đ
                         </Title>
-                        
+
                         <Text style={{ display: 'block', marginBottom: 24 }}>
                             {data.description}
                         </Text>
-                        
+
                         <Space size="large" style={{ marginBottom: 24 }}>
                             <Text>Số lượng:</Text>
                             <InputNumber min={1} defaultValue={1} />
                         </Space>
-                        
+
                         <Space size="large">
-                            <Button 
-                                type="primary" 
-                                size="large" 
+                            <Button
+                                type="primary"
+                                size="large"
                                 icon={<ShoppingCartOutlined />}
                             >
                                 Thêm vào giỏ
@@ -72,7 +71,7 @@ const ProductDetail = () => {
                 </Row>
 
                 <Divider />
-                
+
                 <Card title="Thông tin chi tiết" style={{ marginTop: 32 }}>
                     <Text>{data.description}</Text>
                 </Card>

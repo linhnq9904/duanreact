@@ -2,8 +2,8 @@ import { Form, Input, Button, InputNumber } from "antd";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "./Header";
-import { useEdit } from "../../hooks/useEdit";
-import { useOne } from "../../hooks/useOne";
+import { useEdit } from "../hooks/useEdit";
+import { useOne } from "../hooks/useOne";
 
 const EditProduct = () => {
     const { id } = useParams<{ id: string }>();
