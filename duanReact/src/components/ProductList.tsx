@@ -1,4 +1,4 @@
-import { Card, Row, Col, Button, Image, Layout, Typography, Slider, Space } from "antd";
+import { Card, Row, Col, Button, Image, Layout, Typography, Slider, Space, Pagination } from "antd";
 import { EyeOutlined, FilterOutlined, PlusOutlined } from "@ant-design/icons";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ function ProductList() {
     const nav = useNavigate();
     const { data } = useList("products");
 
-    const [priceRange, setPriceRange] = useState<[number, number]>([0, 100000]);
+    const [priceRange, setPriceRange] = useState<[number, number]>([0, 100000000]);
 
     const filteredProducts = data?.filter(
         (p: Product) => p.price >= priceRange[0] && p.price <= priceRange[1]
@@ -38,8 +38,8 @@ function ProductList() {
                         <Slider
                             range
                             min={0}
-                            max={100000}
-                            step={5000}
+                            max={100000000}
+                            step={5000000}
                             value={priceRange}
                             onChange={(val) => setPriceRange(val as [number, number])}
                             tooltip={{ formatter: (val) => `${val?.toLocaleString()}đ` }}
@@ -48,7 +48,7 @@ function ProductList() {
                             <Text strong>
                                 {priceRange[0].toLocaleString()}đ - {priceRange[1].toLocaleString()}đ
                             </Text>
-                            <Button type="default" onClick={() => setPriceRange([0, 100000])}>
+                            <Button type="default" onClick={() => setPriceRange([0, 100000000])}>
                                 Đặt lại
                             </Button>
                         </Space>

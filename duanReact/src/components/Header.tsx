@@ -1,10 +1,9 @@
 import React from "react";
 import { UserOutlined } from "@ant-design/icons";
-import { Layout, Row, Col, Input, Space, Menu, Button, Dropdown, Typography } from "antd";
+import { Layout, Row, Col, Space, Menu, Button, Dropdown, Typography } from "antd";
 import { useNavigate } from "react-router-dom";
 
 const { Header: AntHeader } = Layout;
-const { Search } = Input;
 const { Text } = Typography;
 
 const Header: React.FC = () => {
@@ -49,7 +48,6 @@ const Header: React.FC = () => {
                         }}
                         onClick={() => navigate("/")}
                     >
-                        Shop Logo
                     </Text>
                 </Col>
 
@@ -77,16 +75,6 @@ const Header: React.FC = () => {
 
                 <Col span={10}>
                     <Space size="large" style={{ float: "right" }}>
-                        <Search
-                            placeholder="Tìm kiếm sản phẩm..."
-                            allowClear
-                            style={{
-                                width: 280,
-                                borderRadius: 6,
-                                paddingTop: "17px"
-                            }}
-                            onSearch={(value) => console.log(value)}
-                        />
                         <Dropdown
                             menu={{
                                 items: userMenu.map((item) => ({
