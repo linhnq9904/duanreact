@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Input, Button, Radio, Card, Row, Col, Typography, Space, Divider } from 'antd';
-import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 
 const { Title, Text } = Typography;
