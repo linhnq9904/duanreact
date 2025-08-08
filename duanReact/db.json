@@ -2,43 +2,40 @@
   "products": [
     {
       "name": "Samsung Galaxy S24",
-      "price": 8992,
-      "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630",
-      "description": "tao day",
-      "id": "2"
-    },
-    {
-      "name": "Samsung Galaxy S24",
       "price": 8910,
       "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630",
       "description": "day ma\n",
-      "id": "76b4"
+      "id": "2"
     },
     {
-      "id": "2661",
-      "name": "linh",
-      "price": 1,
-      "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg"
-    },
-    {
-      "id": "d996",
-      "name": "linh",
-      "price": 1,
-      "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg"
-    },
-    {
-      "id": "8314",
-      "name": "Samsung Galaxy S24",
-      "price": 12032,
-      "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMVFRUWGBgYGBgXGBgYGBgbHRoYGBcdGhobHyggHRolHhgYITEhJSkrLi8uGh8zODMtNygtLisBCgoKDg0NFRAQGi0dHx0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALcBEwMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAADAAIEBQYBBwj/xABKEAABAwIDBAcEBQgIBgMBAAABAgMRACEEEjEFQVFhBhMicYGRoTKxwfAHFEJS0SMzYnKCkuHxQ0RTk6KywtIVFjRUc4Mko+IX/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAECA//EACERAQEBAAMAAgIDAQAAAAAAAAABEQISITFBYZEiUXET/9oADAMBAAIRAxEAPwDyPEJgjuFNS5uqRjG7gg2geFNDABsSq17R8e/yrA7AM8fmb1zKBc0RSrWEHn8KS0LIBzE9wNQJL/CKlIenXhuqMMJBIkGNDuPdNTAAE7jfcR7vwrNDCoAge6rTFbSVcEEnsgEkHKmNBAhIPAVWdQcpUBYEA7oJmOZ0NLMR2QZAM6wJ41AfrTkKrAaAnUnkKl7KbUpwdZOTIVTG4b+7WgYRpw3DBXmIheQ5RB3GI3RrXo/QnDLUhbjrcTlCSR9kC8Tet8aMftRsNp/JgKuJsbe2OXA13CtNqZCrBZsRlURPAc4r1L6uj7ifIfO80Tqki0JG/cKuGvHMCtZUglBKZGaEe6tLiNkNqcaSpoGVbwoCIVqeExWrwuOYaSELdbQoqVAKgJKlEj31H2n0lZQ2VoPWJBAVBggH7Qze0LjSphrzzpXsRSHOw0tKSCQMwcSIurLFwO+sy7KLKBHeCPfXqrvSBhyFNwtQBTkOZKsqheLQT3kVl+kGNbfyHKkBLgn2goJAiFTaTffuFTYuMmWt6",
-      "description": "linh828282"
-    },
-    {
-      "id": "add3",
       "name": "Samsung Galaxy S25",
-      "price": 2122,
+      "price": 21222,
       "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630",
-      "description": "linh"
+      "description": "linh day",
+      "id": "1"
+    },
+    {
+      "name": "Samsung Galaxy S25",
+      "price": 1324,
+      "image": "https://lightontv.com.vn/wp-content/uploads/2023/09/aa.gif",
+      "description": "hjkl",
+      "id": "nDnSML6"
+    },
+    {
+      "name": "Samsung Galaxy S29",
+      "price": 12344,
+      "category": "3",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCACeuOSutnRLQsUU7UHDnlfcKlJqaM9XUHA&s",
+      "description": "sadsad",
+      "id": "HOzQ4TA"
+    },
+    {
+      "name": "Samsung Galaxy S24",
+      "price": 12234,
+      "category": "2",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCACeuOSutnRLQsUU7UHDnlfcKlJqaM9XUHA&s",
+      "description": "sadassaS",
+      "id": "puwivxB"
     }
   ],
   "categories": [
@@ -91,28 +88,13 @@
       "password": "$2a$10$nPPvJCkzlRBfddWFuMaSMOKFpMMri0UOPawGATNCawoXNfanNEPvu",
       "name": "Linh day",
       "id": 1
+    },
+    {
+      "email": "linhnp992004@gmail.com",
+      "password": "$2a$10$Kazz6pS9yX6CczlORkzFLuxBxzyeDKKz5EgeHPWPbhjSPMCA8W8Z2",
+      "name": "linh",
+      "id": 2
     }
   ],
-  "carts": [
-    {
-      "id": "gtag5ghxo",
-      "productId": "76b4",
-      "quantity": 1
-    },
-    {
-      "id": "bm6m4ai94",
-      "productId": "d996",
-      "quantity": 1
-    },
-    {
-      "id": "e53kkgf84",
-      "productId": "76b4",
-      "quantity": 1
-    },
-    {
-      "id": "atm1bd5r1",
-      "productId": "2",
-      "quantity": 1
-    }
-  ]
+  "carts": []
 }

@@ -1,64 +1,95 @@
 import React from "react";
-import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
-import { Layout, Row, Col, Input, Badge, Space, Menu, Button, Dropdown } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { Layout, Row, Col, Input, Space, Menu, Button, Dropdown, Typography } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../contexts/CartContext";
 
 const { Header: AntHeader } = Layout;
 const { Search } = Input;
+const { Text } = Typography;
 
 const Header: React.FC = () => {
     const navigate = useNavigate();
-    const { items } = useCart();
-    const cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
+    const token = localStorage.getItem("token");
+
     const handleLogout = () => {
         localStorage.removeItem("token");
         navigate("/login");
-    }
+    };
+
     const userMenu = [
-        { key: 'Login', label: 'Tài khoản', path: '/login' },
-        { key: 'orders', label: 'Đơn hàng', path: '/orders' },
-        { key: 'logout', label: 'Đăng xuất' }
+        token
+            ? { key: "profile", label: "Hồ sơ", path: "/profile" }
+            : { key: "login", label: "Đăng nhập", path: "/login" },
+        { key: "orders", label: "Đơn hàng", path: "/orders" },
+        ...(token ? [{ key: "logout", label: "Đăng xuất" }] : []),
     ];
 
     return (
-        <AntHeader style={{ background: '#fff', padding: '0 50px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
-            <Row justify="space-between" align="middle" style={{ height: '100%' }}>
+        <AntHeader
+            style={{
+                background: "#fff",
+                padding: "0 50px",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                display: "flex",
+                alignItems: "center",
+                position: "sticky",
+                top: 0,
+                zIndex: 1000,
+            }}
+        >
+            <Row style={{ width: "100%" }} align="middle">
                 <Col span={4}>
-                    <h1
-                        style={{ margin: 0, cursor: 'pointer', fontSize: '24px', color: '#1890ff' }}
-                        onClick={() => navigate('/')}
+                    <Text
+                        strong
+                        style={{
+                            fontSize: "22px",
+                            color: "#1890ff",
+                            cursor: "pointer",
+                            userSelect: "none",
+                        }}
+                        onClick={() => navigate("/")}
                     >
                         Shop Logo
-                    </h1>
+                    </Text>
                 </Col>
 
                 <Col span={10}>
-                    <Menu mode="horizontal" style={{ border: 'none', justifyContent: 'center' }}>
-                        <Menu.Item key="home" onClick={() => navigate('/')}>Trang chủ</Menu.Item>
-                        <Menu.Item key="products" onClick={() => navigate('/products')}>Sản phẩm</Menu.Item>
-                        <Menu.Item key="categories" onClick={() => navigate('/categories')}>Danh mục</Menu.Item>
+                    <Menu
+                        mode="horizontal"
+                        style={{
+                            border: "none",
+                            justifyContent: "center",
+                            fontWeight: 500,
+                        }}
+                        selectable={false}
+                    >
+                        <Menu.Item key="home" onClick={() => navigate("/")}>
+                            Trang chủ
+                        </Menu.Item>
+                        <Menu.Item key="products" onClick={() => navigate("/products")}>
+                            Sản phẩm
+                        </Menu.Item>
+                        <Menu.Item key="categories" onClick={() => navigate("/categories")}>
+                            Danh mục
+                        </Menu.Item>
                     </Menu>
                 </Col>
 
                 <Col span={10}>
-                    <Space align="center" size="large" style={{ float: 'right' }}>
+                    <Space size="large" style={{ float: "right" }}>
                         <Search
                             placeholder="Tìm kiếm sản phẩm..."
-                            style={{ width: 300 }}
+                            allowClear
+                            style={{
+                                width: 280,
+                                borderRadius: 6,
+                                paddingTop: "17px"
+                            }}
                             onSearch={(value) => console.log(value)}
                         />
-                        <Badge count={cartItemCount} size="small">
-                            <Button
-                                icon={<ShoppingCartOutlined />}
-                                shape="circle"
-                                size="large"
-                                onClick={() => navigate('/cart')}
-                            />
-                        </Badge>
                         <Dropdown
                             menu={{
-                                items: userMenu.map(item => ({
+                                items: userMenu.map((item) => ({
                                     key: item.key,
                                     label: item.label,
                                     onClick: () => {
@@ -67,14 +98,16 @@ const Header: React.FC = () => {
                                         } else {
                                             navigate(item.path || "/");
                                         }
-                                    }
-                                }))
+                                    },
+                                })),
                             }}
+                            placement="bottomRight"
                         >
                             <Button
                                 icon={<UserOutlined />}
                                 shape="circle"
                                 size="large"
+                                type="default"
                             />
                         </Dropdown>
                     </Space>

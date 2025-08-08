@@ -1,9 +1,9 @@
-import { Card, Row, Col, Button, Image, Layout, Typography } from "antd";
-import { ShoppingCartOutlined, EyeOutlined } from "@ant-design/icons";
+import { Card, Row, Col, Button, Image, Layout, Typography, Slider, Space } from "antd";
+import { EyeOutlined, FilterOutlined, PlusOutlined } from "@ant-design/icons";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 import { useList } from "../hooks/useList";
-import { useAddToCart } from "../hooks/useAddToCart";
+import { useState } from "react";
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -19,24 +19,48 @@ interface Product {
 function ProductList() {
     const nav = useNavigate();
     const { data } = useList("products");
-    const addToCartMutation = useAddToCart();
 
-    const handleAddToCart = (product: Product) => {
-        addToCartMutation.mutate({
-            id: Math.random().toString(36).substr(2, 9),
-            productId: product.id,
-            quantity: 1,
-            price: 0,
-        });
-    };
+    const [priceRange, setPriceRange] = useState<[number, number]>([0, 100000]);
+
+    const filteredProducts = data?.filter(
+        (p: Product) => p.price >= priceRange[0] && p.price <= priceRange[1]
+    );
 
     return (
         <Layout>
             <Header />
-            <Content style={{ padding: '50px' }}>
+            <Content style={{ padding: '30px 50px' }}>
+                {/* Bộ lọc giá */}
+                <Card style={{ marginBottom: 24 }}>
+                    <Space direction="vertical" style={{ width: '100%' }}>
+                        <Title level={4} style={{ margin: 0 }}>
+                            <FilterOutlined /> Lọc theo giá
+                        </Title>
+                        <Slider
+                            range
+                            min={0}
+                            max={100000}
+                            step={10000}
+                            value={priceRange}
+                            onChange={(val) => setPriceRange(val as [number, number])}
+                            tooltip={{ formatter: (val) => `${val?.toLocaleString()}đ` }}
+                        />
+                        <Space>
+                            <Text strong>
+                                {priceRange[0].toLocaleString()}đ - {priceRange[1].toLocaleString()}đ
+                            </Text>
+                            <Button type="default" onClick={() => setPriceRange([0, 100000])}>
+                                Đặt lại
+                            </Button>
+                        </Space>
+                    </Space>
+                </Card>
+
                 <Title level={2}>Sản phẩm nổi bật</Title>
                 <Row gutter={[16, 16]}>
-                    {data?.map((product: Product) => (
+
+
+                    {filteredProducts?.map((product: Product) => (
                         <Col xs={24} sm={12} md={8} lg={6} key={product.id}>
                             <Card
                                 hoverable
@@ -56,14 +80,6 @@ function ProductList() {
                                     >
                                         Chi tiết
                                     </Button>,
-                                    <Button
-                                        type="primary"
-                                        icon={<ShoppingCartOutlined />}
-                                        onClick={() => handleAddToCart(product)}
-                                        loading={addToCartMutation.isPending}
-                                    >
-                                        Thêm vào giỏ
-                                    </Button>
                                 ]}
                             >
                                 <Card.Meta
@@ -81,6 +97,22 @@ function ProductList() {
                             </Card>
                         </Col>
                     ))}
+                    <Col xs={24} sm={12} md={8} lg={6}>
+                        <Card
+                            hoverable
+                            style={{
+                                height: 380,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                border: "2px dashed #d9d9d9",
+                                cursor: "pointer"
+                            }}
+                            onClick={() => nav("/productCreate")}
+                        >
+                            <PlusOutlined style={{ fontSize: 48, color: "#1890ff" }} />
+                        </Card>
+                    </Col>
                 </Row>
             </Content>
         </Layout>

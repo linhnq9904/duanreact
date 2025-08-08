@@ -3,24 +3,24 @@ import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CategoryList from "./components/CategoryList";
 import OrderList from "./components/Order";
-import OrderProduct from "./components/OrderProduct";
 import ProductCreate from "./components/ProductCreate";
 import UserList from "./components/UserList";
 import EditProduct from "./components/EditProduct";
-import Register from "./components/Register";
 import Login from "./components/Login";
-import ProductDetail from "./components/ProductDetail";
-import Cart from "./components/Cart";
-import Checkout from "./components/Checkout";
-import UserProfile from "./components/UserProfile";
-import { CartProvider } from "./contexts/CartContext";
 import PrivateRoute from "./components/PrivateRoute";
+import ProductDetail from "./components/ProductDetail";
+import Register from "./components/Register";
+import Profile from "./components/Profile";
 
 function App() {
     const router = createBrowserRouter([
         {
             path: "/",
-            element: <ProductList />,
+            element: (
+                <PrivateRoute>
+                    <ProductList />
+                </PrivateRoute>
+            ),
         },
         {
             path: "/products",
@@ -32,10 +32,14 @@ function App() {
         },
         {
             path: "/categories",
-            element: <CategoryList />,
+            element: (
+                <PrivateRoute>
+                    <CategoryList />
+                </PrivateRoute>
+            ),
         },
         {
-            path: "/Orders",
+            path: "/orders",
             element: (
                 <PrivateRoute>
                     <OrderList />
@@ -43,55 +47,55 @@ function App() {
             ),
         },
         {
-            path: "/OrderProduct",
-            element: <OrderProduct />,
+            path: "/productCreate",
+            element: (
+                <PrivateRoute>
+                    <ProductCreate />
+                </PrivateRoute>
+            ),
         },
         {
-            path: "/ProductCreate",
-            element: <ProductCreate />,
-        },
-        {
-            path: "/Users",
-            element: <UserList />,
+            path: "/users",
+            element: (
+                <PrivateRoute>
+                    <UserList />
+                </PrivateRoute>
+            ),
         },
         {
             path: "/product/edit/:id",
-            element: <EditProduct />,
-        },
-        {
-            path: "/resigter",
-            element: <Register />,
+            element: (
+                <PrivateRoute>
+                    <EditProduct />
+                </PrivateRoute>
+            ),
         },
         {
             path: "/login",
             element: <Login />,
         },
         {
-            path: "/product/detail/:id",
-            element: <ProductDetail />,
+            path: "/register",
+            element: <Register />,
         },
         {
-            path: "/cart",
+            path: "/product/detail/:id",
             element: (
                 <PrivateRoute>
-                    <Cart />
+                    <ProductDetail />
                 </PrivateRoute>
             ),
         },
         {
-            path: "/checkout",
-            element: <Checkout />,
-        },
-        {
-            path: "/profile",
-            element: <UserProfile />,
+            path: "/Profile",
+            element: (
+                <PrivateRoute>
+                    <Profile />
+                </PrivateRoute>
+            ),
         },
     ]);
-    return (
-        <CartProvider>
-            <RouterProvider router={router} />
-        </CartProvider>
-    );
+    return <RouterProvider router={router} />;
 }
 
 export default App;

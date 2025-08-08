@@ -12,6 +12,7 @@ export const useAuth = (resource: string) => {
         onSuccess: (data) => {
             message.success("thanh cong");
             localStorage.setItem("token", data.accessToken);
+            localStorage.setItem("userId", data.user.id);
         },
         onError: () => {
             message.error('loi');

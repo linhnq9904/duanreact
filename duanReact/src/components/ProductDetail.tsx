@@ -1,28 +1,44 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { Spin, Alert, Typography, Image, Button, Row, Col, Card, InputNumber, Space, Rate, Divider } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import {
+    Spin,
+    Alert,
+    Typography,
+    Image,
+    Button,
+    Row,
+    Col,
+    Space,
+    Divider,
+    Popconfirm
+} from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import Header from "./Header";
-import { useQuery } from "@tanstack/react-query";
+import { useOne } from "../hooks/useOne";
+import { useDelete } from "../hooks/useDelete";
 
 const { Title, Text } = Typography;
 
-const fetchProductById = async (id: string) => {
-    const res = await fetch(`http://localhost:3001/products/${id}`);
-    if (!res.ok) throw new Error("Không tìm thấy sản phẩm");
-    return res.json();
-};
-
 const ProductDetail = () => {
     const { id } = useParams<{ id: string }>();
+    const navigate = useNavigate();
 
-    const { data, isLoading, isError } = useQuery({
-        queryKey: ["product", id],
-        queryFn: () => fetchProductById(id!),
-        enabled: !!id,
+    const { data, isLoading, error } = useOne("products", id);
+
+    const { mutate: deleteProduct, isPending } = useDelete("products", {
+        onSuccess: () => { navigate("/products") },
     });
 
-    if (isLoading) return <Spin size="large" style={{ display: 'block', margin: '20px auto' }} />;
-    if (isError || !data) return <Alert type="error" message="Không thể tải sản phẩm" />;
+    if (isLoading) {
+        return <Spin size="large" style={{ display: 'block', margin: '20px auto' }} />;
+    }
+
+    if (error) {
+        return <Alert type="error" message="Không thể tải sản phẩm" />;
+    }
+
+    if (!data) {
+        return <Alert type="error" message="Không tìm thấy sản phẩm" />;
+    }
 
     return (
         <>
@@ -39,8 +55,6 @@ const ProductDetail = () => {
                     </Col>
                     <Col span={12}>
                         <Title level={2}>{data.name}</Title>
-                        <Rate disabled defaultValue={4.5} />
-                        <Text type="secondary" style={{ marginLeft: 8 }}>(150 đánh giá)</Text>
 
                         <Divider />
 
@@ -52,30 +66,33 @@ const ProductDetail = () => {
                             {data.description}
                         </Text>
 
-                        <Space size="large" style={{ marginBottom: 24 }}>
-                            <Text>Số lượng:</Text>
-                            <InputNumber min={1} defaultValue={1} />
-                        </Space>
-
-                        <Space size="large">
-                            <Button
-                                type="primary"
-                                size="large"
-                                icon={<ShoppingCartOutlined />}
+                        <Space size="middle">
+                            <Link to={`/product/edit/${id}`}>
+                                <Button type="primary" icon={<EditOutlined />}>
+                                    Sửa sản phẩm
+                                </Button>
+                            </Link>
+                            <Popconfirm
+                                title="Xóa sản phẩm"
+                                description="Bạn có chắc chắn muốn xóa sản phẩm này?"
+                                onConfirm={() => deleteProduct(id!)}
+                                okText="Có"
+                                cancelText="Không"
                             >
-                                Thêm vào giỏ
-                            </Button>
-                            <Button size="large">Mua ngay</Button>
+                                <Button
+                                    danger
+                                    icon={<DeleteOutlined />}
+                                    loading={isPending}
+                                >
+                                    Xóa sản phẩm
+                                </Button>
+                            </Popconfirm>
                         </Space>
                     </Col>
                 </Row>
 
                 <Divider />
-
-                <Card title="Thông tin chi tiết" style={{ marginTop: 32 }}>
-                    <Text>{data.description}</Text>
-                </Card>
-            </div>
+            </div >
         </>
     );
 };

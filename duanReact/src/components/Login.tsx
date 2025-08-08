@@ -46,7 +46,7 @@ function Login() {
                 </Form.Item>
 
                 <Form.Item>
-                    <Link to="/resigter">Bạn chưa có tài khoản?</Link>
+                    <Link to="/register">Bạn chưa có tài khoản?</Link>
                 </Form.Item>
 
                 <Form.Item>

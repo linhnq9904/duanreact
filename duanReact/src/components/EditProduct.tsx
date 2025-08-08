@@ -1,5 +1,5 @@
 import { Form, Input, Button, InputNumber } from "antd";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "./Header";
 import { useEdit } from "../hooks/useEdit";
@@ -8,17 +8,21 @@ import { useOne } from "../hooks/useOne";
 const EditProduct = () => {
     const { id } = useParams<{ id: string }>();
     const [form] = Form.useForm();
-
+    const nav = useNavigate();
     const { data: product } = useOne("products", id);
 
     useEffect(() => {
-        form.setFieldsValue(product);
+        if (product) {
+            form.setFieldsValue(product);
+        }
     }, [product, form]);
 
-    const editMutation = useEdit("products");
+
+    const editMutation = useEdit(id!);
 
     const handleSubmit = (values: any) => {
         editMutation.mutate(values);
+        nav(`/product/detail/${id}`)
     };
     return <>
         <Header />

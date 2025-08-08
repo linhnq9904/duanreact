@@ -1,17 +1,35 @@
-import { Form, Input, Button, InputNumber, Upload, Card, Typography, Space, Select } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { Form, Input, Button, InputNumber, Card, Typography, Space, Select, message, notification } from "antd";
 import Header from "./Header";
 import { useCreate } from "../hooks/useCreate";
+import { useList } from "../hooks/useList";
+import { useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 
 const ProductCreate = () => {
     const [form] = Form.useForm();
+    const navigate = useNavigate();
     const { mutate } = useCreate();
+    const { data: categories } = useList("categories");
 
-    const handleSubmit = async (values: any) => {
-        mutate(values)
-    }
+    const handleSubmit = (values: any) => {
+        mutate(values, {
+            onSuccess: () => {
+                notification.success({
+                    message: "Thêm sản phẩm thành công",
+                    description: "Sản phẩm của bạn đã được lưu vào hệ thống.",
+                    placement: "topRight",
+                    duration: 2
+                });
+                setTimeout(() => {
+                    navigate("/products");
+                }, 1000);
+            },
+            onError: () => {
+                message.error("Có lỗi xảy ra khi thêm sản phẩm!");
+            }
+        });
+    };
 
     return (
         <>
@@ -60,11 +78,10 @@ const ProductCreate = () => {
                                 <Select
                                     size="large"
                                     placeholder="Chọn danh mục"
-                                    options={[
-                                        { value: 'electronics', label: 'Điện tử' },
-                                        { value: 'clothing', label: 'Thời trang' },
-                                        { value: 'books', label: 'Sách' }
-                                    ]}
+                                    options={categories?.map((cat: any) => ({
+                                        value: cat.id,
+                                        label: cat.name
+                                    }))}
                                 />
                             </Form.Item>
                         </Space>
@@ -74,13 +91,7 @@ const ProductCreate = () => {
                             name="image"
                             rules={[{ required: true, message: "Vui lòng tải lên hình ảnh sản phẩm" }]}
                         >
-                            <Upload
-                                listType="picture-card"
-                                maxCount={1}
-                                beforeUpload={() => false}
-                            >
-                                <Button icon={<UploadOutlined />}>Tải ảnh lên</Button>
-                            </Upload>
+                            <Input placeholder="Nhập Link hình ảnh"></Input>
                         </Form.Item>
 
                         <Form.Item
