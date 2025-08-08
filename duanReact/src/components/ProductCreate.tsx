@@ -56,7 +56,8 @@ const ProductCreate = () => {
                                 name="price"
                                 rules={[
                                     { required: true, message: "Vui lòng nhập giá" },
-                                    { type: "number", min: 1000, message: "Giá phải lớn hơn 1000đ" }
+                                    { type: "number", min: 1000, message: "Giá phải lớn hơn 1000đ" },
+                                    { type: "number", max: 100000, message: "Giá phải nhỏ hơn 100000đ" }
                                 ]}
                                 style={{ flex: 1 }}
                             >

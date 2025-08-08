@@ -30,7 +30,6 @@ function ProductList() {
         <Layout>
             <Header />
             <Content style={{ padding: '30px 50px' }}>
-                {/* Bộ lọc giá */}
                 <Card style={{ marginBottom: 24 }}>
                     <Space direction="vertical" style={{ width: '100%' }}>
                         <Title level={4} style={{ margin: 0 }}>
@@ -40,7 +39,7 @@ function ProductList() {
                             range
                             min={0}
                             max={100000}
-                            step={10000}
+                            step={5000}
                             value={priceRange}
                             onChange={(val) => setPriceRange(val as [number, number])}
                             tooltip={{ formatter: (val) => `${val?.toLocaleString()}đ` }}

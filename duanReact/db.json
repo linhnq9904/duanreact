@@ -3,8 +3,8 @@
     {
       "name": "Samsung Galaxy S24",
       "price": 8910,
-      "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630",
-      "description": "day ma\n",
+      "image": "https://lightontv.com.vn/wp-content/uploads/2023/09/aa.gif",
+      "description": "le thi khanh huyền\n",
       "id": "2"
     },
     {
@@ -16,9 +16,10 @@
     },
     {
       "name": "Samsung Galaxy S25",
-      "price": 1324,
+      "price": 21324,
       "image": "https://lightontv.com.vn/wp-content/uploads/2023/09/aa.gif",
-      "description": "hjkl",
+      "description": "hjklđa",
+      "categoryId": "2",
       "id": "nDnSML6"
     },
     {
@@ -32,9 +33,9 @@
     {
       "name": "Samsung Galaxy S24",
       "price": 12234,
-      "category": "2",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCACeuOSutnRLQsUU7UHDnlfcKlJqaM9XUHA&s",
       "description": "sadassaS",
+      "categoryId": "1",
       "id": "puwivxB"
     }
   ],

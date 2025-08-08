@@ -2,7 +2,7 @@ import ProductList from "./components/ProductList";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CategoryList from "./components/CategoryList";
-import OrderList from "./components/Order";
+import OrderList from "./components/order";
 import ProductCreate from "./components/ProductCreate";
 import UserList from "./components/UserList";
 import EditProduct from "./components/EditProduct";
