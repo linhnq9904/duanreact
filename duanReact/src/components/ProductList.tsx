@@ -1,4 +1,4 @@
-import { Card, Row, Col, Button, Image, Layout, Typography, Slider, Space, Pagination } from "antd";
+import { Card, Row, Col, Button, Image, Layout, Typography, Slider, Space } from "antd";
 import { EyeOutlined, FilterOutlined, PlusOutlined } from "@ant-design/icons";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
