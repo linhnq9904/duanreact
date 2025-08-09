@@ -89,5 +89,11 @@
       "confirmPassword": "123123",
       "id": 3
     }
+  ],
+  "carts": [
+    {
+      "quantity": 1,
+      "id": 1
+    }
   ]
 }

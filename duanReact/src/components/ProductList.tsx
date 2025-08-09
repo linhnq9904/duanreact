@@ -1,9 +1,10 @@
-import { Card, Row, Col, Button, Image, Layout, Typography, Slider, Space } from "antd";
-import { EyeOutlined, FilterOutlined, PlusOutlined } from "@ant-design/icons";
+import { Card, Row, Col, Button, Image, Layout, Typography, Slider, Space, Tooltip, message } from "antd";
+import { EyeOutlined, FilterOutlined, PlusOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 import { useList } from "../hooks/useList";
 import { useState } from "react";
+import { useCart } from "../hooks/useCart";
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -26,10 +27,13 @@ function ProductList() {
         (p: Product) => p.price >= priceRange[0] && p.price <= priceRange[1]
     );
 
+    const { addToCart } = useCart();
+
     return (
         <Layout>
             <Header />
             <Content style={{ padding: '30px 50px' }}>
+                {/* Bộ lọc giá */}
                 <Card style={{ marginBottom: 24 }}>
                     <Space direction="vertical" style={{ width: '100%' }}>
                         <Title level={4} style={{ margin: 0 }}>
@@ -55,10 +59,9 @@ function ProductList() {
                     </Space>
                 </Card>
 
+                {/* Danh sách sản phẩm */}
                 <Title level={2}>Sản phẩm nổi bật</Title>
                 <Row gutter={[16, 16]}>
-
-
                     {filteredProducts?.map((product: Product) => (
                         <Col xs={24} sm={12} md={8} lg={6} key={product.id}>
                             <Card
@@ -72,13 +75,27 @@ function ProductList() {
                                     />
                                 )}
                                 actions={[
-                                    <Button
-                                        type="link"
-                                        icon={<EyeOutlined />}
-                                        onClick={() => nav(`/product/detail/${product.id}`)}
-                                    >
-                                        Chi tiết
-                                    </Button>,
+                                    <Tooltip title="Xem chi tiết">
+                                        <Button
+                                            type="link"
+                                            icon={<EyeOutlined />}
+                                            onClick={() => nav(`/product/detail/${product.id}`)}
+                                        >
+                                            Chi tiết
+                                        </Button>
+                                    </Tooltip>,
+                                    <Tooltip title="Thêm vào giỏ hàng">
+                                        <Button
+                                            type="link"
+                                            icon={<ShoppingCartOutlined />}
+                                            onClick={() => {
+                                                addToCart(product.id, 1);
+                                                nav("/cart");
+                                            }}
+                                        >
+                                            Thêm
+                                        </Button>
+                                    </Tooltip>
                                 ]}
                             >
                                 <Card.Meta
@@ -96,6 +113,7 @@ function ProductList() {
                             </Card>
                         </Col>
                     ))}
+
                     <Col xs={24} sm={12} md={8} lg={6}>
                         <Card
                             hoverable
@@ -113,8 +131,8 @@ function ProductList() {
                         </Card>
                     </Col>
                 </Row>
-            </Content>
-        </Layout>
+            </Content >
+        </Layout >
     );
 }
 

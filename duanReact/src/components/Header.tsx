@@ -12,6 +12,7 @@ const Header: React.FC = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("userId");
         navigate("/login");
     };
 
@@ -20,6 +21,7 @@ const Header: React.FC = () => {
             ? { key: "profile", label: "Hồ sơ", path: "/profile" }
             : { key: "login", label: "Đăng nhập", path: "/login" },
         { key: "orders", label: "Đơn hàng", path: "/orders" },
+        { key: "cart", label: "Giỏ hàng", path: "/cart" },
         ...(token ? [{ key: "logout", label: "Đăng xuất" }] : []),
     ];
 
