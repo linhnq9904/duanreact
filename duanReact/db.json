@@ -88,12 +88,39 @@
       "name": "Quang Linh",
       "confirmPassword": "123123",
       "id": 3
+    },
+    {
+      "email": "linh@gmail.com",
+      "password": "$2a$10$lChYfoj2KAvD3bnXqTYrCuy6wU7t/3zJTDHQfB70fTqIKecELI5ia",
+      "name": "Samsung Galaxy S25",
+      "confirmPassword": "Linh123123",
+      "id": 4
     }
   ],
   "carts": [
     {
-      "quantity": 1,
+      "userId": "2",
+      "product_id": "nDnSML6",
+      "quantity": 20,
       "id": 1
+    },
+    {
+      "userId": "3",
+      "product_id": "nDnSML6",
+      "quantity": 8,
+      "id": 2
+    },
+    {
+      "userId": "4",
+      "product_id": "puwivxB",
+      "quantity": 11,
+      "id": 4
+    },
+    {
+      "userId": "4",
+      "product_id": "nDnSML6",
+      "quantity": 52,
+      "id": 5
     }
   ]
 }

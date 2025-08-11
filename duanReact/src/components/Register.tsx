@@ -18,7 +18,8 @@ function Register() {
         }
 
         setErrorMessage("");
-        authMutation.mutate(values, {
+        const { confirmPassword, ...dataToSend } = values;
+        authMutation.mutate(dataToSend, {
             onSuccess: () => {
                 nav('/login');
             },

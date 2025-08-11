@@ -25,11 +25,8 @@ function App() {
         },
         {
             path: "/products",
-            element: (
-                <PrivateRoute>
-                    <ProductList />
-                </PrivateRoute>
-            ),
+            element:
+                <ProductList />
         },
         {
             path: "/categories",

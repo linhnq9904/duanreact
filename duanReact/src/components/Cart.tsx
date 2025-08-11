@@ -6,6 +6,8 @@ const { Text } = Typography;
 
 export default function Cart() {
     const { cart, updateQuantity, removeItem } = useCart();
+    const grandTotal = cart.reduce((sum, item) => sum + (item.price ?? 0) * (item.quantity ?? 0), 0);
+
 
     const columns = [
         {
@@ -60,7 +62,7 @@ export default function Cart() {
                     <Button danger icon={<DeleteOutlined />} />
                 </Popconfirm>
             )
-        }
+        },
     ];
 
     return (
@@ -69,6 +71,17 @@ export default function Cart() {
             columns={columns}
             rowKey="id"
             pagination={false}
+            summary={() => (
+                <Table.Summary.Row>
+                    <Table.Summary.Cell index={0} colSpan={3} align="right">
+                        <Text strong>Tổng cộng</Text>
+                    </Table.Summary.Cell>
+                    <Table.Summary.Cell index={1}>
+                        <Text strong>{grandTotal.toLocaleString("vi-VN")}đ</Text>
+                    </Table.Summary.Cell>
+                    <Table.Summary.Cell index={2} />
+                </Table.Summary.Row>
+            )}
         />
     );
 }
